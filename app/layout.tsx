@@ -31,14 +31,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const proxyUrl = process.env.NEXT_PUBLIC_CLERK_PROXY_URL;
 
   return (
     <ClerkProvider
       signInUrl="/sign-in"
       signUpUrl="/sign-up"
       afterSignOutUrl="/"
-      {...(proxyUrl ? { proxyUrl } : {})}
+      proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL ?? ""}
     >
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
