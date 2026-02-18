@@ -55,11 +55,9 @@ export default function OrganizationSwitcherPage() {
 
         {/* Back Button */}
         <div className="flex justify-center">
-          <button className="text-slate-600 hover:text-slate-900">
-            <Link href="/">
-              Back to Dashboard
-            </Link>
-          </button>
+          <Link href="/" className="text-slate-600 hover:text-slate-900">
+            Back to Dashboard
+          </Link>
         </div>
       </div>
     </div>
