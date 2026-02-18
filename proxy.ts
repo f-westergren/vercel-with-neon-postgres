@@ -50,7 +50,7 @@ const clerkHandler = clerkMiddleware(async (auth, req) => {
   }
 });
 
-export default function middleware(req: NextRequest, event: NextFetchEvent) {
+export default function proxy(req: NextRequest, event: NextFetchEvent) {
   const proxyResponse = proxyToClerkFrontendApi(req);
   if (proxyResponse) {
     return proxyResponse;
