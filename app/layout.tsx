@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
   ClerkProvider,
   SignInButton,
@@ -33,7 +34,12 @@ export default function RootLayout({
   const proxyUrl = process.env.NEXT_PUBLIC_CLERK_PROXY_URL;
 
   return (
-    <ClerkProvider {...(proxyUrl ? { proxyUrl } : {})}>
+    <ClerkProvider
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      afterSignOutUrl="/"
+      {...(proxyUrl ? { proxyUrl } : {})}
+    >
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <header className="flex justify-end items-center p-4 gap-4 h-16">
@@ -46,7 +52,26 @@ export default function RootLayout({
               </SignUpButton>
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <Link
+                href="/account"
+                className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+              >
+                Account
+              </Link>
+              <UserButton userProfileUrl="/account">
+                <UserButton.MenuItems>
+                  <UserButton.Link
+                    label="Manage organization"
+                    labelIcon={<span aria-hidden>◇</span>}
+                    href="/dashboard"
+                  />
+                  <UserButton.Link
+                    label="Create organization"
+                    labelIcon={<span aria-hidden>+</span>}
+                    href="/create-organization"
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </SignedIn>
           </header>
           {children}
