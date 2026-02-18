@@ -54,6 +54,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+#### Clerk Frontend API proxy (optional)
+
+To serve Clerk’s Frontend API through your own domain (e.g. for strict firewalls or CSP), set:
+
+- `NEXT_PUBLIC_CLERK_PROXY_URL` to your proxy URL (e.g. `https://noeli.dev/__clerk/`).
+- In [Clerk Dashboard → Domains](https://dashboard.clerk.com/~/domains), open **Frontend API → Advanced**, and set **Proxy URL** to the same value.
+
+See [Proxying the Clerk Frontend API](https://clerk.com/docs/guides/dashboard/dns-domains/proxy-fapi).
+
 #### Neon MCP Server
 
 ```

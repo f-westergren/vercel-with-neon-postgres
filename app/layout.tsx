@@ -30,8 +30,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const proxyUrl = process.env.NEXT_PUBLIC_CLERK_PROXY_URL;
+
   return (
-    <ClerkProvider>
+    <ClerkProvider {...(proxyUrl ? { proxyUrl } : {})}>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <header className="flex justify-end items-center p-4 gap-4 h-16">
